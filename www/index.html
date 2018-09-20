@@ -8,25 +8,32 @@
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link href="css/all.css" rel="stylesheet">
   <script src="js/jquery.min.js"></script>
+  <script src="js/jquery.slidereveal.min.js"></script>
+<style>
+
+.side-panel{
+	background-color: #E6E6E6;
+	padding: 10px;
+}
+</style>
 	<script>
 		$(document).ready(function(){
 	    //jquery code goes here....
-			//$(document.body).prepend($().load("navbar.html"));
-			$.ajax({
-		    url: "navbar.html",
-		    success: function (data) {
-					$('body').prepend(data);
-					$("a.nav-link").click(
-						function(e){
-     					e.preventDefault();
-							$("#main_page").load(this.href);
-							$("a.nav-link").parent().removeClass("active");
-							this.parent().addClass("active");
-						}
-					);
-				},
-		    dataType: 'html'
+			//https://nnattawat.github.io/slideReveal/
+			$("#slider").slideReveal({
+				trigger: $(".navbar-toggler,a.nav-link"),
+				push: false,
+				overlay: true
 			});
+			$("a.nav-link").click(
+				function(e){
+					e.preventDefault();
+					$("#main_page").load(this.href);
+					$("a.nav-link").parent().removeClass("active");
+					this.parent().addClass("active");
+					$("#slider").slideReveal("toggle");
+				}
+			);
 			$.ajax({
 		    url: "home.html",
 		    success: function (data) {
@@ -39,6 +46,28 @@
 </head>
 
 <body>
+	<div id="slider" class="side-panel">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active">
+					<a class="nav-link" href="home.html"><span><i class="fas fa-home"></i>Home</span></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="shop.html"><span><i class="fas fa-shopping-cart"></i>Shop</span></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="team.html"><span><i class="fas fa-users"></i>Team</span></a>
+				</li>
+				<li class="nav-item ">
+					<a class="nav-link" href="contacts.html"><span><i class="fas fa-address-book"></i>Contacts</span></a>
+				</li>
+			</ul>
+	</div>
+	<nav class="navbar navbar-fixed-top navbar-dark bg-dark">
+		<a class="navbar-brand" href="#">IMS</a>
+		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse">
+		<span class="navbar-toggler-icon"></span>
+		</button>
+	</nav>
 	<div id="main_page" class="container text-center">
 	</div>
 	<footer><p class="text-center">Copyright &copy; 2018 IMS</p></footer>
