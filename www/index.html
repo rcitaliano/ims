@@ -29,6 +29,12 @@
 			});
 			$("#slider").slideReveal("toggle");
 			$("#slider").slideReveal("toggle");
+			$(".internal-link").click(
+				function(e){
+					e.preventDefault();
+					$("#main_page").load(this.href);
+				}
+			);
 			$("a.nav-link").click(
 				function(e){
 					e.preventDefault();
@@ -71,7 +77,10 @@
 		<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="mx-auto">
-			<a class="navbar-brand text-center" href="#"><h1>I.M.S.</h1></a>
+			<a class="navbar-brand text-center internal-link" href="home.html"><h1>I.M.S.</h1></a>
+		</div>
+		<div class="nav-item mx-right">
+			<a class="internal-link" href="contacts.html"><i class="fas fa-envelope fa-5x"></i></a>
 		</div>
 	</nav>
 	<div id="main_page" class="container text-center">
