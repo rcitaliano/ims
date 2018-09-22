@@ -1,0 +1,31 @@
+<h1>Eventi</h1>
+<p class="lead">welcome to our app</p>
+<div class="row .row-eq-height">
+  <div class="col-md-4">
+    <button type="button" href="home.html" class="internal-link btn btn-dark btn-circle shadow-lg p-3 mb-5">
+      <i class="fas fa-bible"></i>
+      <h5>Missione I.M.S.</h5>
+    </button>
+  </div>
+  <div class="col-md-4">
+    <button type="button" href="team.html" class="internal-link btn btn-dark btn-circle shadow-lg p-3 mb-5">
+      <i class="fas fa-users"></i>
+      <h5>Il Team</h5>
+    </button>
+  </div>
+  <div class="col-md-4">
+    <button type="button" href="events.html" class="internal-link btn btn-dark btn-circle shadow-lg p-3 mb-5">
+      <i class="fas fa-calendar-alt"></i>
+      <h5>Eventi</h5>
+    </button>
+  </div>
+</div>
+<script>
+  // enable the buttons
+  $(".internal-link").click(
+    function(e){
+      e.preventDefault();
+      $("#main_page").load($(this).attr("href"));
+    }
+  );
+</script>

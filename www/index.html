@@ -17,6 +17,11 @@
 .navbar-brand {
 	font-size: xx-large;
 }
+.btn-circle {
+	border-radius: 50%;
+	width: 200px;
+	height: 200px;
+}
 </style>
 	<script>
 		$(document).ready(function(){
@@ -29,12 +34,6 @@
 			});
 			$("#slider").slideReveal("toggle");
 			$("#slider").slideReveal("toggle");
-			$(".internal-link").click(
-				function(e){
-					e.preventDefault();
-					$("#main_page").load(this.href);
-				}
-			);
 			$("a.nav-link").click(
 				function(e){
 					e.preventDefault();
@@ -66,6 +65,9 @@
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="team.html"><span><i class="fas fa-users"></i>Team</span></a>
+				</li>
+				<li class="nav-item ">
+					<a class="nav-link" href="events.html"><span><i class="fas fa-calendar-alt"></i>Events</span></a>
 				</li>
 				<li class="nav-item ">
 					<a class="nav-link" href="contacts.html"><span><i class="fas fa-address-book"></i>Contacts</span></a>
