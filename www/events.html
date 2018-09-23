@@ -1,83 +1,90 @@
-<h1>Eventi</h1>
-<p class="lead">welcome to our app</p>
-<div class="row .row-eq-height">
-  <div class="col-md-4">
-    <button type="button" href="home.html" class="internal-link btn btn-dark btn-circle shadow-lg p-3 mb-5">
-      <i class="fas fa-bible"></i>
-      <h5>Missione I.M.S.</h5>
-    </button>
-  </div>
-  <div class="col-md-4">
-    <button type="button" href="team.html" class="internal-link btn btn-dark btn-circle shadow-lg p-3 mb-5">
-      <i class="fas fa-users"></i>
-      <h5>Il Team</h5>
-    </button>
-  </div>
-  <div class="col-md-4">
-    <button type="button" href="events.html" class="internal-link btn btn-dark btn-circle shadow-lg p-3 mb-5">
-      <i class="fas fa-calendar-alt"></i>
-      <h5>Eventi</h5>
-    </button>
-  </div>
-<div id="event_list" class="row .row-eq-height">
-</div>
-<script>
-  // enable the buttons
-  $(".internal-link").click(
-    function(e){
-      e.preventDefault();
-      $("#main_page").load($(this).attr("href"));
-    }
-  );
-  window.fbAsyncInit = function() {
-      FB.init({
-        appId            : '2049605998423435',
-        autoLogAppEvents : true,
-        xfbml            : true,
-        version          : 'v3.1'
-      });
-
-      //all the facebook functions must be called after the init
-      /* make the API call */
-      FB.api(
-          "/181077808611069/events",
-          {access_token: "put the access token here"},
-          function (response) {
-            if (response) {
-              if (response.error) {
-                alert(response.error.message);
-              }
-              else {
-                var event_html = $("<div></div>");
-                for (var i = 0; i < response.data.length;i++)
-                {
-                  var fb_event = response.data[i];
-                  var card = $("<div></div>");
-                  card.addClass("card mb-4 shadow-sm");
-
-                  var card_body = $("<div></div>");
-                  card_body.addClass("card-body");
-                  card_body.text(fb_event.name + fb_event.description +fb_event.end_time);
-
-                  var date = new Date(fb_event.start_time);
-                  var div_date= $("<div></div>");
-                  div_date.text(date.getDate()+"/"+(date.getMonth()+1)+"/"+date.getFullYear());
-                  card.append(div_date);
-                  card.append(card_body);
-                  event_html.append(card);
-                }
-                $("#event_list").prepend(event_html);
-              }
-            }
-          }
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <h1>Eventi</h1>
+    <p class="lead">welcome to our app</p>
+    <div class="row .row-eq-height">
+      <div class="col-md-4">
+        <button type="button" href="home.html" class="internal-link btn btn-dark btn-circle shadow-lg p-3 mb-5">
+          <i class="fas fa-bible"></i>
+          <h5>Missione I.M.S.</h5>
+        </button>
+      </div>
+      <div class="col-md-4">
+        <button type="button" href="team.html" class="internal-link btn btn-dark btn-circle shadow-lg p-3 mb-5">
+          <i class="fas fa-users"></i>
+          <h5>Il Team</h5>
+        </button>
+      </div>
+      <div class="col-md-4">
+        <button type="button" href="events.html" class="internal-link btn btn-dark btn-circle shadow-lg p-3 mb-5">
+          <i class="fas fa-calendar-alt"></i>
+          <h5>Eventi</h5>
+        </button>
+      </div>
+    <div id="event_list" class="row .row-eq-height">
+    </div>
+    <script>
+      // enable the buttons
+      $(".internal-link").click(
+        function(e){
+          e.preventDefault();
+          $("#main_page").load($(this).attr("href"));
+        }
       );
-    };
+      window.fbAsyncInit = function() {
+          FB.init({
+            appId            : '2049605998423435',
+            autoLogAppEvents : true,
+            xfbml            : true,
+            version          : 'v3.1'
+          });
 
-    (function(d, s, id){
-       var js, fjs = d.getElementsByTagName(s)[0];
-       if (d.getElementById(id)) {return;}
-       js = d.createElement(s); js.id = id;
-       js.src = "https://connect.facebook.net/en_US/sdk.js";
-       fjs.parentNode.insertBefore(js, fjs);
-     }(document, 'script', 'facebook-jssdk'));
-</script>
+          //all the facebook functions must be called after the init
+          /* make the API call */
+          FB.api(
+              "/181077808611069/events",
+              {access_token: "put the access token here"},
+              function (response) {
+                if (response) {
+                  if (response.error) {
+                    alert(response.error.message);
+                  }
+                  else {
+                    var event_html = $("<div></div>");
+                    for (var i = 0; i < response.data.length;i++)
+                    {
+                      var fb_event = response.data[i];
+                      var card = $("<div></div>");
+                      card.addClass("card mb-4 shadow-sm");
+
+                      var card_body = $("<div></div>");
+                      card_body.addClass("card-body");
+                      card_body.text(fb_event.name + fb_event.description +fb_event.end_time);
+
+                      var date = new Date(fb_event.start_time);
+                      var div_date= $("<div></div>");
+                      div_date.text(date.getDate()+"/"+(date.getMonth()+1)+"/"+date.getFullYear());
+                      card.append(div_date);
+                      card.append(card_body);
+                      event_html.append(card);
+                    }
+                    $("#event_list").prepend(event_html);
+                  }
+                }
+              }
+          );
+        };
+
+        (function(d, s, id){
+           var js, fjs = d.getElementsByTagName(s)[0];
+           if (d.getElementById(id)) {return;}
+           js = d.createElement(s); js.id = id;
+           js.src = "https://connect.facebook.net/en_US/sdk.js";
+           fjs.parentNode.insertBefore(js, fjs);
+         }(document, 'script', 'facebook-jssdk'));
+    </script>
+  </body>
+</html>
