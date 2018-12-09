@@ -31,6 +31,7 @@
 	<icon src="icon.png" />
 	<!-- android icons and splash generated using https://www.resource-generator.com/-->
 	<platform name="android">
+		<preference name="android-targetSdkVersion"  value="26" />
 		<icon qualifier="ldpi" src="www/res/icons/android/drawable-ldpi-icon.png" />
 		<icon qualifier="mdpi" src="www/res/icons/android/drawable-mdpi-icon.png" />
 		<icon qualifier="hdpi" src="www/res/icons/android/drawable-hdpi-icon.png" />
